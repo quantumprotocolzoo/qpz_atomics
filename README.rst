@@ -3,17 +3,28 @@ qpz_atomics
 ===========
 
 
-Add a short description here!
+This library provides atomic functions implementations and make them available to several quantum simulation backends.
 
 
 Description
 ===========
 
-A longer description of your project goes here...
+* Status
+
+The library is under active development but in a very ealy stage. 
 
 
-Note
-====
+* Design principles
 
-This project has been set up using PyScaffold 3.2.3. For details and usage
-information on PyScaffold see https://pyscaffold.org/.
+-   Backend mappings
+-   Modularity
+-   Tests
+
+
+* Usage
+
+Look at the `examples/examples.py` file. The library is instantiated for each node (as if the nodes were independent computers, each loading its version of the library). 
+
+Other sources of inspirations are the tests defined in the `tests` directory
+
+New atomic functions will be added following the list established by extracting atomic functions from the Quantum Protocol Zoo.
