@@ -2,7 +2,7 @@ import functools
 import unittest
 
 def pauli(_, bit, base):
-    print('.', end='', flush=True) 
+    #print('.', end='', flush=True) 
     q = _.prep.pauli(bit, base)
 
     if base == 1: m = _.MEAS(_.H(q))
@@ -12,7 +12,7 @@ def pauli(_, bit, base):
     assert (m == bit)
 
 def ghz(_, nb_target_nodes, basis):
-    print('.', end= '', flush=True)
+    #print('.', end= '', flush=True)
     def meas(q, basis):
         if basis == 1: #X measurement
             return _.MEAS(_.H(q))

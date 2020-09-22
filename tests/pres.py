@@ -2,7 +2,7 @@ import functools
 import unittest
 
 def qotp(_, ck_b):
-    print('.', end='', flush=True) 
+    #print('.', end='', flush=True) 
     def prep_classical(c):
         if c == 1: q = _.PREP()
         elif c == 2: q = _.X(_.PREP())
