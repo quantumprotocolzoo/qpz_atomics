@@ -1,14 +1,12 @@
-#+TITLE: qpz_atomics Library of Atomic Functions for Quantum Networks
+#+TITLE: Quantum Protocol Zoo Library of Atomic Functions for Quantum Networks
 
 * Overview
 
 This library provides atomic functions implementations and makes them available to several quantum simulation backends.
 
-
 * Status
 
 The library is under active development but in a very ealy stage. 
-
 
 * Design principles
 There exist many different quantum computing backends. The idea with this library was to abstract them away so that code running written using the library could be run on other backends, provided that the rest of the code not composed of functions defined by the library is not backend specific.
