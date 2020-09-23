@@ -1,11 +1,10 @@
 class Test:
     def __init__(self, _):
-        def swap(conn, q1, q2):
+        def swap(q1, q2):
 
             """
             launch the swap test
             params:
-                conn: string, node to do the swap
                 q1, q2: iterable of qubits
 
             """
