@@ -10,4 +10,13 @@ class Meas:
             else: raise NameError(f"""Cannot prepare this state: basis must be 1=X, 2=Z or 3=Y. Currently:  {m}""")
             return m
 
+        def equatorial(qubit, pi_over_4_multiple):
+            """
+            qubit -> pi/4 multiple -> bit 
+            Measures a qubit in the equatorial plane at angles multiple of pi over 4.
+            """
+            return _.MEAS(_.H(reduce(lambda a, c: _.Tinv(a), range(pi_over_4_multiple %8), qubit)))
+        
         self.pauli = pauli
+
+        

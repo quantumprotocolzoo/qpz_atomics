@@ -19,7 +19,7 @@ Implemented atomic functions and planning
 |----------------------------------------------------------+----------------+------------+------+--------------------+-----------------------------------------------------------------------------------|
 | Creation Pauli eigenstates                               | DNE            | OK         | OK   | prep               |                                                                                   |
 | Creation and broadcast of n-party GHZ state              | DNE            | OK         | OK   | prep               |                                                                                   |
-| Single qubit equatorial plane preparation                | TDO            |            |      | prep               |                                                                                   |
+| Single qubit equatorial plane preparation                | DNE            | OK         | TDO  | prep               |                                                                                   |
 | Creation and broadcast of n-party stabilizer states      | NXT            |            |      | prep               |                                                                                   |
 | QFactory                                                 | LTR            |            |      | prep               |                                                                                   |
 |----------------------------------------------------------+----------------+------------+------+--------------------+-----------------------------------------------------------------------------------|

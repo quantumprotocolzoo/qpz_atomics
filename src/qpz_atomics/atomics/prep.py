@@ -1,3 +1,5 @@
+from functools import reduce
+
 class Prep:
     def __init__(self, _): 
         def pauli(bit, base):
@@ -35,8 +37,8 @@ class Prep:
             pi_over_4_multiple -> qubit
             Prepares a qubit in $Z(theta) \ket{+}$ where theta is a $\pi/4$ multiple
             """
-            q = _.PREP()
-            
+            return reduce(lambda a, c: _.T(a), range(pi_over_4_multiple % 8), _.H(_.PREP())) 
 
         self.pauli = pauli
+        self.equatorial = equatorial
         self.ghz = ghz
