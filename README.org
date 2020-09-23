@@ -17,8 +17,8 @@ Implemented atomic functions and planning
 | CZ gate                                                  | DNE            | OK         | TDO  | gate               | self inverse, and corresponds to classically controlled Z for comp. basis control |
 | CSWAP gate                                               | DNE            | OK         | TDO  | gate               |                                                                                   |
 |----------------------------------------------------------+----------------+------------+------+--------------------+-----------------------------------------------------------------------------------|
-| Creation Pauli eigenstates                               | DNE            | OK         | OK   | prep               |                                                                                   |
-| Creation and broadcast of n-party GHZ state              | DNE            | OK         | OK   | prep               |                                                                                   |
+| Creation Pauli eigenstates                               | DNE            | OK         | DNE  | prep               |                                                                                   |
+| Creation and broadcast of n-party GHZ state              | DNE            | OK         | DNE  | prep               |                                                                                   |
 | Single qubit equatorial plane preparation                | DNE            | OK         | TDO  | prep               |                                                                                   |
 | Creation and broadcast of n-party stabilizer states      | NXT            |            |      | prep               |                                                                                   |
 | QFactory                                                 | LTR            |            |      | prep               |                                                                                   |
