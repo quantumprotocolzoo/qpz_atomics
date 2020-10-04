@@ -7,7 +7,7 @@ This library provides atomic functions implementations and makes them available 
 * Status
 
 Implemented atomic functions and planning
-| Name                                                     | Implementation | Doc string | Test | Cubmodule          | Comment                                                                           |
+| Name                                                     | Implementation | Doc string | Test | Submodule          | Comment                                                                           |
 |----------------------------------------------------------+----------------+------------+------+--------------------+-----------------------------------------------------------------------------------|
 | Sending qubit (given by simulation backend)              | DNE            | OK         | NA   | simulaqron mapping |                                                                                   |
 | Receive qubit (given by simulation backend)              | DNE            | OK         | NA   | simulaqron mapping |                                                                                   |

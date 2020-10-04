@@ -1,5 +1,7 @@
-# Temporary and binary files
+*.nix
 *~
+
+# Temporary and binary files
 *.py[cod]
 *.so
 *.cfg
