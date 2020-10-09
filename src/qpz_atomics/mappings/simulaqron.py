@@ -14,14 +14,14 @@ def Y(q, *args, **kwargs):
     """
     q.Y(*args, **kwargs); return q
 
-    def Z(q, *args, **kwargs):
+def Z(q, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies Z to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.Z(*args, **kwargs); return q
 
-    def H(q, *args, **kwargs):
+def H(q, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies H (Hadamard) to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
@@ -77,7 +77,7 @@ def RECV(node, *args, **kwargs):
     (node, *args, **kwargs) -> qubit
     Looks in the input qubit buffer of the local node for a received qubit, and retrieves it
     '''
-return node.recvQubit(*args, **kwargs)
+    return node.recvQubit(*args, **kwargs)
 
 #def TELE(): return None
 
