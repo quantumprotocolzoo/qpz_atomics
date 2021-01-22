@@ -40,15 +40,14 @@ class lib:
         self.T = backend_mapping["T"]
         self.Tinv = backend_mapping["Tinv"]
 
-        self.INIT = partial (backend_mapping["INIT"], node=node)
         self.PREP = partial (backend_mapping["PREP"], node=node)
         self.MEAS = partial (backend_mapping["MEAS"], node=node)
         self.DISP = backend_mapping["DISP"]
         self.QID = backend_mapping["QID"]
 
         self.EPR = backend_mapping["EPR"]
-        self.SEND = partial (backend_mapping["SEND"], node=node)
-        self.RECV = partial (backend_mapping["RECV"], node=node)
+        #        self.SEND = partial (backend_mapping["SEND"], node=node)
+        #        self.RECV = partial (backend_mapping["RECV"], node=node)
         self.TELE = backend_mapping["TELE"]
 
         mapp = self 

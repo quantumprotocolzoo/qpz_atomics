@@ -24,6 +24,7 @@ class EncodeQubitProgram(QuantumProgram):
 
     def program(self):
         q1, = self.get_qubit_indices(1)
+        print(q1)
         self.apply(instr.INSTR_INIT, q1)
         if self.bit == 1:
             self.apply(instr.INSTR_X, q1)
@@ -96,15 +97,21 @@ class KeySenderProtocol(NodeProtocol):
         secret_key = np.random.randint(2, size=self.key_size)
         bases = list(np.random.randint(2, size=self.key_size))
 
-        _ = qpz_atomics.lib(mapping, self.node.qmemory)
+        _ = qpz_atomics.lib(mapping, self)
         
         # Transmit encoded qubits to Bob
         for i, bit in enumerate(secret_key):
-            #self.node.qmemory.execute_program(EncodeQubitProgram(bases[i], bit))
-            #yield self.await_program(self.node.qmemory)
-            _.prep.pauli(bit, bases[i])
+            #self.node.qmemory.execute_program(EncodeQubitProgram(bases[i], bit)) #HO
+            #yield self.await_program(self.node.qmemory) #HO
+            _.prep.pauli(bit, bases[i]+1, q=[0])
+            # self.node.qmemory.execute_instruction(instr.INSTR_INIT, [0])
+            # yield self.await_program(self.node.qmemory)
+            # self.node.qmemory.execute_instruction(instr.INSTR_X, [0])
+            # yield self.await_program(self.node.qmemory)
+
             
             q = self.node.qmemory.pop(0)
+            print(q) #ho
             self.node.ports[self.q_port].tx_output(q)
             if i < self.key_size - 1:
                 yield self.await_port_input(self.node.ports[self.c_port])
@@ -124,8 +131,6 @@ class KeySenderProtocol(NodeProtocol):
         self.key = final_key
         self.send_signal(signal_label=Signals.SUCCESS, result=final_key) 
 
-        print(len(self.key)) # HO
-        
 def create_processor():
     """Factory to create a quantum processor for each end node.
 
@@ -181,8 +186,8 @@ if __name__ == '__main__':
     node_a = n.get_node("alice")
     node_b = n.get_node("bob")
 
-    p1 = KeySenderProtocol(node_a, key_size=1000)
-    p2 = KeyReceiverProtocol(node_b, key_size=1000)
+    p1 = KeySenderProtocol(node_a, key_size=2)
+    p2 = KeyReceiverProtocol(node_b, key_size=2)
 
     p1.start()
     p2.start()

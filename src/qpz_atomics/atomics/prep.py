@@ -8,16 +8,17 @@ class Prep:
             Prepares a qubit in a Pauli eigenstate defined by a bit value (0 for +1 eigenvalue, 1 for -1 eigenvalue) and an integer 1,2,3 corresponding to the Pauli operator selected.
             """
             if base == 1: 
-                if bit == 0 : q = _.H(_.PREP(q=q))
-                elif bit == 1 : q = _.H(_.X(_.PREP(q=q)))
+                if bit == 0 : q_out = _.H(_.PREP(q=q))
+                elif bit == 1 : q_out = _.H(_.X(_.PREP(q=q)))
             elif base == 2: 
-                if bit == 0 : q = _.PREP(q=q)
-                elif bit == 1 : q = _.X(_.PREP(q=q))
+                if bit == 0 : q_out = _.PREP(q=q)
+                elif bit == 1 : q_out = _.X(_.PREP(q=q))
             elif base == 3: 
-                if bit == 0 : q = _.K(_.PREP(q=q))
-                elif bit == 1 : q = _.K(_.X(_.PREP(q=q)))
-            else: raise NameError(f"""Cannot prepare this state: basis must be 1=X, 2=Z or 3=Y. Currently:  {m}""")
-            return q
+                if bit == 0 : q_out = _.K(_.PREP(q=q))
+                elif bit == 1 : q_out = _.K(_.X(_.PREP(q=q)))
+            else: raise NameError(f"""Cannot prepare this state: basis must be 1=X, 2=Z or 3=Y. Currently:  {base}""")
+            print(bit,base,q)
+            return q_out
 
         def ghz(nb_target_nodes):
             """
