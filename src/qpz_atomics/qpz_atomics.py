@@ -30,18 +30,19 @@ def setup_logging(loglevel):
 
 class lib:
     def __init__(self, backend_mapping, node):
-        self.X = backend_mapping["X"]
+        self.X = partial (backend_mapping["X"], node=node)
         self.Y = backend_mapping["Y"]
-        self.Z = backend_mapping["Z"]
-        self.H = backend_mapping["H"]
+        self.Z = partial (backend_mapping["Z"], node=node)
+        self.H = partial (backend_mapping["H"], node=node)
         self.CNOT = backend_mapping["CNOT"]
 
         self.K = backend_mapping["K"]
         self.T = backend_mapping["T"]
         self.Tinv = backend_mapping["Tinv"]
 
+        self.INIT = partial (backend_mapping["INIT"], node=node)
         self.PREP = partial (backend_mapping["PREP"], node=node)
-        self.MEAS = backend_mapping["MEAS"]
+        self.MEAS = partial (backend_mapping["MEAS"], node=node)
         self.DISP = backend_mapping["DISP"]
         self.QID = backend_mapping["QID"]
 
