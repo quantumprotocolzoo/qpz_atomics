@@ -1,66 +1,66 @@
 from cqc.pythonLib import qubit
 
-def X(q, *args, **kwargs):
+def X(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies X to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.X(*args, **kwargs); return q
 
-def Y(q, *args, **kwargs):
+def Y(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies Y to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.Y(*args, **kwargs); return q
 
-def Z(q, *args, **kwargs):
+def Z(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies Z to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.Z(*args, **kwargs); return q
 
-def H(q, *args, **kwargs):
+def H(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies H (Hadamard) to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.H(*args, **kwargs); return q
 
-def K(q, *args, **kwargs):
+def K(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies K to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.K(*args, **kwargs); return q
 
-def T(q, *args, **kwargs):
+def T(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies T to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.T(*args, **kwargs); return q
 
-def Tinv(q, *args, **kwargs):
+def Tinv(q, node, *args, **kwargs):
     """
     (q, *args, **kwargs) -> qubit
     Applies Inverse T gate to qubit and returns the qubit to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     q.rot_Z(224, *args, **kwargs); return q
 
-def CNOT(p, q, *args, **kwargs):
+def CNOT(p, q, node, *args, **kwargs):
     """
     (p, q, *args, **kwargs) -> p, q 
     Applies CNOT to qubit control p and qubit target q  and returns the p and q to be used for having a functional like programming, but not necessary as the qubit is modified in place.
     """
     p.cnot(q, *args, **kwargs); return p, q
 
-def PREP(node, *args, **kwargs): return qubit(node, *args, **kwargs)
-def MEAS(q, *args, **kwargs): return q.measure(*args, **kwargs)
+def PREP(q, node, *args, **kwargs): return qubit(node, *args, **kwargs)
+def MEAS(q, node, *args, **kwargs): return q.measure(*args, **kwargs)
 
-def DISP(q): print(q, f"""QID: {q._qID}"""); return None
-def QID(q): return q._qID
+def DISP(q, node): print(q, f"""QID: {q._qID}"""); return None
+def QID(q, node): return q._qID
 
 #def EPR(): return None
 def SEND(q, target_id, node, *args, **kwargs):

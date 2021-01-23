@@ -21,15 +21,18 @@ class EncodeQubitProgram(QuantumProgram):
         super().__init__()
         self.base = base
         self.bit = bit
-
+        self._ = qpz_atomics.lib(mapping, self)
+        
     def program(self):
         q1, = self.get_qubit_indices(1)
         print(q1)
-        self.apply(instr.INSTR_INIT, q1)
-        if self.bit == 1:
-            self.apply(instr.INSTR_X, q1)
-        if self.base == 1:
-            self.apply(instr.INSTR_H, q1)
+        self._.prep.pauli(0,2,[0])
+        
+        # self.apply(instr.INSTR_INIT, q1)
+        # if self.bit == 1:
+        #     self.apply(instr.INSTR_X, q1)
+        # if self.base == 1:
+        #     self.apply(instr.INSTR_H, q1)
         yield self.run()
 
 
@@ -97,18 +100,10 @@ class KeySenderProtocol(NodeProtocol):
         secret_key = np.random.randint(2, size=self.key_size)
         bases = list(np.random.randint(2, size=self.key_size))
 
-        _ = qpz_atomics.lib(mapping, self)
-        
         # Transmit encoded qubits to Bob
         for i, bit in enumerate(secret_key):
-            #self.node.qmemory.execute_program(EncodeQubitProgram(bases[i], bit)) #HO
-            #yield self.await_program(self.node.qmemory) #HO
-            _.prep.pauli(bit, bases[i]+1, q=[0])
-            # self.node.qmemory.execute_instruction(instr.INSTR_INIT, [0])
-            # yield self.await_program(self.node.qmemory)
-            # self.node.qmemory.execute_instruction(instr.INSTR_X, [0])
-            # yield self.await_program(self.node.qmemory)
-
+            self.node.qmemory.execute_program(EncodeQubitProgram(bases[i], bit))
+            yield self.await_program(self.node.qmemory)
             
             q = self.node.qmemory.pop(0)
             print(q) #ho

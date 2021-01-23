@@ -31,14 +31,14 @@ def setup_logging(loglevel):
 class lib:
     def __init__(self, backend_mapping, node):
         self.X = partial (backend_mapping["X"], node=node)
-        self.Y = backend_mapping["Y"]
+        self.Y = partial (backend_mapping["Y"], node=node)
         self.Z = partial (backend_mapping["Z"], node=node)
         self.H = partial (backend_mapping["H"], node=node)
-        self.CNOT = backend_mapping["CNOT"]
+        self.CNOT = partial (backend_mapping["CNOT"], node=node)
 
-        self.K = backend_mapping["K"]
-        self.T = backend_mapping["T"]
-        self.Tinv = backend_mapping["Tinv"]
+        self.K = partial (backend_mapping["K"], node=node)
+        self.T = partial (backend_mapping["T"], node=node)
+        self.Tinv = partial (backend_mapping["Tinv"], node=node)
 
         self.PREP = partial (backend_mapping["PREP"], node=node)
         self.MEAS = partial (backend_mapping["MEAS"], node=node)
@@ -46,8 +46,8 @@ class lib:
         self.QID = backend_mapping["QID"]
 
         self.EPR = backend_mapping["EPR"]
-        #        self.SEND = partial (backend_mapping["SEND"], node=node)
-        #        self.RECV = partial (backend_mapping["RECV"], node=node)
+        self.SEND = partial (backend_mapping["SEND"], node=node)
+        self.RECV = partial (backend_mapping["RECV"], node=node)
         self.TELE = backend_mapping["TELE"]
 
         mapp = self 

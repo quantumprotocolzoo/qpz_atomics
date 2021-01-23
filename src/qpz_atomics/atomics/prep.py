@@ -2,7 +2,7 @@ from functools import reduce
 
 class Prep:
     def __init__(self, _): 
-        def pauli(bit, base, q=0):
+        def pauli(bit, base, q=[0]):
             """
             bit in 0,1 -> base in 1=X,2=Z,3=Y -> qubit in basis = base with value = bit
             Prepares a qubit in a Pauli eigenstate defined by a bit value (0 for +1 eigenvalue, 1 for -1 eigenvalue) and an integer 1,2,3 corresponding to the Pauli operator selected.
@@ -25,13 +25,13 @@ class Prep:
             nb_target_nodes -> array of qubits
             Prepares an n-party GHZ state
             """
-            def add_one_qubit(q):
-                __, r = _.CNOT(q, _.PREP())
+            def add_one_qubit(q, p):
+                __, r = _.CNOT(q, _.PREP(p))
                 return r
 
-            q = _.H(_.PREP())
+            q = _.H(_.PREP(0))
 
-            return [q] + [add_one_qubit(q) for _ in range(nb_target_nodes)]
+            return [q] + [add_one_qubit(q, p) for p in range(nb_target_nodes)]
 
         def equatorial(pi_over_4_multiple):
             """

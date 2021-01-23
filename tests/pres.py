@@ -4,12 +4,12 @@ import unittest
 def qotp(_, ck_b):
     #print('.', end='', flush=True) 
     def prep_classical(c):
-        if c == 1: q = _.PREP()
-        elif c == 2: q = _.X(_.PREP())
-        elif c == 3: q = _.H(_.PREP())
-        elif c == 4: q = _.Z(_.H(_.PREP()))
-        elif c == 5: q = _.K(_.PREP())
-        elif c == 6: q = _.Z(_.K(_.PREP()))
+        if c == 1: q = _.PREP(0)
+        elif c == 2: q = _.X(_.PREP(0))
+        elif c == 3: q = _.H(_.PREP(0))
+        elif c == 4: q = _.Z(_.H(_.PREP(0)))
+        elif c == 5: q = _.K(_.PREP(0))
+        elif c == 6: q = _.Z(_.K(_.PREP(0)))
         else: raise NameError("Cannot prepare this state")
         return q
 
